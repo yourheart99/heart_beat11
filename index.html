@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Beat</title>
+
+  <style>
+    body {
+      background: #000;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .type_words {
+      position: fixed;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 180px;
+      color: #f1dadb;
+      padding: 20px;
+      text-transform: lowercase;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="type_words" id="contents"></div>
+  <script src="js/three.min.js"></script>
+  <script src="js/MeshSurfaceSampler.js"></script>
+  <script src="js/TrackballControls.js"></script>
+  <script src="js/simplex-noise.js"></script>
+  <script src="js/OBJLoader.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    function start() {
+      const text = [
+        "于我而言，你是最好且是唯一❤️",
+        "宝贝，永远爱你❤️"
+      ]
+      let str = text.join('<br><br>')
+      let str_ = ''
+      let i = 0
+      let content = document.getElementById('contents')
+      let timer = setInterval(() => {
+        if (str_.length < str.length) {
+          str_ += str[i++]
+          content.innerHTML = '<p>' + str_ + '<span class="xx" style="opacity: 1;    color: red;">❤</span></p>'                        //打印时加光标
+        } else {
+          clearInterval(timer)
+          content.innerHTML = '<p>' + str_ + '</p>'
+        }
+      }, 100)
+    }
+    setTimeout(() => {
+      start();
+    }, 1000);
+  </script>
+</body>
+
+</html>
