@@ -11,13 +11,15 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
+const bgColor = "#131124";
+
 //  创建渲染器对象
 const renderer = new THREE.WebGLRenderer({
   antialias: true, //  是否执行抗锯齿。默认值为false。
 });
 
 // 设置颜色及其透明度
-renderer.setClearColor(new THREE.Color("rgb(0,0,0)"));
+renderer.setClearColor(new THREE.Color(bgColor));
 
 // 将输 canvas 的大小调整为 (width, height) 并考虑设备像素比，且将视口从 (0, 0) 开始调整到适合大小
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -52,7 +54,7 @@ new THREE.OBJLoader().load(
 
     // 基础网格材质
     heart.material = new THREE.MeshBasicMaterial({
-      color: new THREE.Color("rgb(0,0,0)"),
+      color: new THREE.Color(bgColor),
     });
     originHeart = Array.from(heart.geometry.attributes.position.array);
     // 用于在网格表面上采样加权随机点的实用程序类。
@@ -79,9 +81,9 @@ group.add(particles);
 const simplex = new SimplexNoise();
 const pos = new THREE.Vector3();
 const palette = [
-  new THREE.Color("#ffd4ee"),
-  new THREE.Color("#ff77fc"),
-  new THREE.Color("#ff77ae"),
+  new THREE.Color("#f0a1a8"),
+  new THREE.Color("#de1c31"),
+  new THREE.Color("#f0a1a8"),
   new THREE.Color("#ff1775"),
 ];
 class SparkPoint {
